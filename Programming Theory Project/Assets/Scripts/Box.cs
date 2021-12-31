@@ -6,6 +6,7 @@ public class Box : Target
 {
     protected override void InitiateDestroySequence()
     {
+        // POLYMORPHISM
         base.InitiateDestroySequence();
         StartCoroutine(ChangeColor());
     }
@@ -24,6 +25,8 @@ public class Box : Target
             changeTime += Time.deltaTime;
             yield return new WaitForSeconds(Time.deltaTime);
         }
+
+        // ABSTRACTION
         DestroyTarget();
     }
 }

@@ -6,6 +6,7 @@ public class Barrel : Target
 {
     protected override void InitiateDestroySequence()
     {
+        // POLYMORPHISM
         base.InitiateDestroySequence();
         StartCoroutine(Shrink());
     }
@@ -21,6 +22,8 @@ public class Barrel : Target
             shrinkTime += Time.deltaTime;
             yield return new WaitForSeconds(Time.deltaTime);
         }
+
+        // ABSTRACTION
         DestroyTarget();
     }
 }

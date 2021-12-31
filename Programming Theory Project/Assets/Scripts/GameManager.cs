@@ -8,19 +8,24 @@ public class GameManager : MonoBehaviour
     // Properties used by the targets to validate they're moving inside the playing area;
     // by reading the values from here there's no need for every target to have its own set of
     // private variables, reducing the use of memory
+
+    // ENCAPSULATION
     public float XBoundary { get; private set; }
     public float YMinBoundary { get; private set; }
     public float YMaxBoundary { get; private set; }
     public float ZBoundary { get; private set; }
+    // ENCAPSULATION
     //................................................
 
     public GameObject[] targetPrefabs;
 
+    // ENCAPSULATION
     public bool IsGameActive { get; private set; }
 
     private float timeDelay = 1.0F;
     private float timeRepeat = 1.5f;
     private int maxTargets = 10;
+    // ENCAPSULATION
 
     void Start()
     {
@@ -30,7 +35,7 @@ public class GameManager : MonoBehaviour
         ZBoundary = 10.0f;
 
         IsGameActive = true;
-        InvokeRepeating("SpawnTarget", timeDelay, timeRepeat);
+        InvokeRepeating("SpawnTarget", timeDelay, timeRepeat); // ABSTRACTION
     }
 
     void SpawnTarget()
@@ -39,6 +44,7 @@ public class GameManager : MonoBehaviour
         {
             int index = Random.Range(0, targetPrefabs.Length);
 
+            //                                    ABSTRACTION
             Instantiate(targetPrefabs[index], RandomSpawnPosition(), targetPrefabs[index].transform.rotation);
         }
     }

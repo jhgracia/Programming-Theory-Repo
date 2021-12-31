@@ -8,6 +8,7 @@ public class Bomb : Target
 
     protected override void InitiateDestroySequence()
     {
+        // POLYMORPHISM
         base.InitiateDestroySequence();
         Explode();
     }
@@ -15,6 +16,8 @@ public class Bomb : Target
     void Explode()
     {
         Instantiate(explosion, transform.position, explosion.transform.rotation);
+
+        // ABSTRACTION
         DestroyTarget();
     }
 }

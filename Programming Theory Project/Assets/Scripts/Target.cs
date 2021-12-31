@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Target : MonoBehaviour
 {
+    // INHERITANCE - This is the parent class for the 'Barrel', 'Bomb' and 'Box' classes
+
+    // ENCAPSULATION - 'Points' is accessed, as read only, by the 'DisplayPoints' class, and all other fields are private
     [SerializeField] private int m_Points;
     public int Points { get { return m_Points; } }
 
@@ -17,25 +20,28 @@ public class Target : MonoBehaviour
 
     private UIManager uiManager;
     private GameManager gameManager;
+    // ENCAPSULATION
 
     void Start()
     {
-        // Initialize managers
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
         uiManager = GameObject.Find("Canvas").GetComponent<UIManager>();
 
-        // Initialize rotationAngle and moveDirection
+        // ABSTRACTION
         rotationAngle = GetRandomVector();
         moveDirection = GetRandomVector();
+        // ABSTRACTION
     }
 
     void Update()
     {
         if (gameManager.IsGameActive)
         {
+            // ABSTRACTION
             RotateMe();
             MoveMe();
             ValidateBoundaries();
+            // ABSTRACTION
         }
     }
 
@@ -43,19 +49,20 @@ public class Target : MonoBehaviour
     {
         if (gameManager.IsGameActive)
         {
+            // ABSTRACTION
             InitiateDestroySequence();
         }
     }
 
     protected virtual void InitiateDestroySequence()
     {
-        // Override to add destroying behavior
-
+        // POLYMORPHISM - child classess 'Barrel', 'Bomb', and 'Box' override this method
         uiManager.UpdateScore(m_Points);
     }
 
     protected void DestroyTarget()
     {
+        // ABSTRACTION - child classess 'Barrel', 'Bomb', and 'Box' call this method
         Destroy(gameObject);
     }
 

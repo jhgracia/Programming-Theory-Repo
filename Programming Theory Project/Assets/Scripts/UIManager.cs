@@ -13,6 +13,7 @@ public class UIManager : MonoBehaviour
     {
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
 
+        // ABSTRACTION
         DisplayScore();
     }
 
@@ -21,11 +22,16 @@ public class UIManager : MonoBehaviour
         if (DataManager.Instance != null)
         {
             DataManager.Instance.Score += score;
+
+            // ABSTRACTION
             DisplayScore();
 
             if (DataManager.Instance.Score == 0)
             {
+                // ABSTRACTION
                 gameManager.GameOver();
+
+
                 gameOverObject.SetActive(true);
             }
         }
