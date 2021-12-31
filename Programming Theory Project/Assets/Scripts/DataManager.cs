@@ -14,6 +14,7 @@ public class DataManager : MonoBehaviour
         get { return m_Name; }
         set
         {
+            // Blank name is changed to "Unknown Player"
             if (value == "")
             {
                 m_Name = "Unknown Player";
@@ -30,6 +31,7 @@ public class DataManager : MonoBehaviour
         get { return m_Score; }
         set
         {
+            // Negative score is changed to 0
             if (value < 0)
             {
                 m_Score = 0;
